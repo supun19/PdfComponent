@@ -37,39 +37,39 @@ export class PdfComponent implements AfterContentInit {
   }
 
   loadPdf(ob :any){
-    ob.promise.then(function(pdf:any) {
-
-      console.log('PDF loaded');
-
-      // Fetch the first page
-      var pageNumber = 1;
-      pdf.getPage(pageNumber).then(function(page:any) {
-        console.log('Page loaded');
-
-        var scale = 1.5;
-        var viewport = page.getViewport(scale);
-
-        // Prepare canvas using PDF page dimensions
-        var canvas = document.getElementById('the-canvas');
-        var context = canvas.getContext('2d');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        // Render PDF page into canvas context
-        var renderContext = {
-          canvasContext: context,
-          viewport: viewport
-        };
-        var renderTask = page.render(renderContext);
-        renderTask.then(function () {
-          console.log('Page rendered');
-        });
-      });
-    }, function (reason:any) {
-      // PDF loading error
-      console.error(reason);
-
-    });
+    // ob.promise.then(function(pdf:any) {
+    //
+    //   console.log('PDF loaded');
+    //
+    //   // Fetch the first page
+    //   var pageNumber = 1;
+    //   pdf.getPage(pageNumber).then(function(page:any) {
+    //     console.log('Page loaded');
+    //
+    //     var scale = 1.5;
+    //     var viewport = page.getViewport(scale);
+    //
+    //     // Prepare canvas using PDF page dimensions
+    //     var canvas = this.myElement.getElementById('the-canvas');
+    //     var context = canvas.getContext('2d');
+    //     canvas.height = viewport.height;
+    //     canvas.width = viewport.width;
+    //
+    //     // Render PDF page into canvas context
+    //     var renderContext = {
+    //       canvasContext: context,
+    //       viewport: viewport
+    //     };
+    //     var renderTask = page.render(renderContext);
+    //     renderTask.then(function () {
+    //       console.log('Page rendered');
+    //     });
+    //   });
+    // }, function (reason:any) {
+    //   // PDF loading error
+    //   console.error(reason);
+    //
+    // });
 
   }
 
